@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Gudimella Sri Surya — Frontend Developer Portfolio</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #F7FAFC;
+      --card: #FFFFFF;
+      --muted: #6B7280;
+      --primary: #1F618D;
+      --accent: #2E4053;
+      --accent-2: #154360;
+      --line: #E6EEF7;
+      --radius: 12px;
+      --shadow: 0 6px 18px rgba(38,57,84,0.08);
+      font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color-scheme: light;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background: linear-gradient(180deg,var(--bg), #FFFFFF);
+      color: #0f1724;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:32px;
+      display:flex;
+      justify-content:center;
+      font-size:15px;
+      line-height:1.5;
+    }
+
+    .container{
+      width:100%;
+      max-width:980px;
+      background:var(--card);
+      border-radius:16px;
+      box-shadow:var(--shadow);
+      padding:28px;
+      border:1px solid var(--line);
+      overflow:hidden;
+    }
+
+    /* Header */
+    .header{
+      display:flex;
+      gap:18px;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+    .identity{
+      display:flex;
+      gap:16px;
+      align-items:center;
+    }
+    .avatar{
+      width:84px;
+      height:84px;
+      border-radius:12px;
+      background:linear-gradient(135deg,var(--primary),var(--accent));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:white;
+      font-weight:700;
+      font-size:26px;
+      box-shadow:0 6px 20px rgba(31,97,141,0.12);
+    }
+    .name{
+      font-size:20px;
+      font-weight:700;
+      color:var(--accent);
+      letter-spacing:0.2px;
+    }
+    .role{
+      color:var(--muted);
+      font-weight:600;
+      font-size:13px;
+      margin-top:4px;
+    }
+
+    .contact{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .btn{
+      background:transparent;
+      border:1px solid var(--primary);
+      color:var(--primary);
+      padding:8px 12px;
+      border-radius:10px;
+      font-weight:600;
+      text-decoration:none;
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      transition:all .18s ease;
+      font-size:13px;
+    }
+    .btn:hover{ transform:translateY(-3px); box-shadow:0 6px 18px rgba(31,97,141,0.06) }
+
+    /* Layout */
+    .main{
+      display:grid;
+      grid-template-columns: 1fr 340px;
+      gap:28px;
+      margin-top:18px;
+    }
+
+    /* Left column */
+    .card{
+      background:linear-gradient(180deg,rgba(255,255,255,0.95), rgba(255,255,255,0.98));
+      border-radius:12px;
+      padding:18px;
+      border:1px solid var(--line);
+      box-shadow: 0 4px 14px rgba(16,24,40,0.03);
+    }
+
+    h3.section-title{
+      margin:0 0 10px 0;
+      font-size:14px;
+      color:var(--accent-2);
+      font-weight:700;
+    }
+
+    p.lead{
+      margin:0 0 10px 0;
+      color:#0b1630;
+    }
+
+    /* Two column info rows on left */
+    .info-grid{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap:10px 16px;
+      margin-top:8px;
+    }
+    .info-item{ font-size:14px; color:var(--muted) }
+
+    /* Skills badges */
+    .skills{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      margin-top:8px;
+    }
+    .skill{
+      background:linear-gradient(90deg, rgba(31,97,141,0.07), rgba(46,64,83,0.04));
+      border:1px solid var(--line);
+      padding:8px 10px;
+      border-radius:10px;
+      font-weight:600;
+      color:var(--accent-2);
+      font-size:13px;
+    }
+
+    /* Project item */
+    .project{
+      border-radius:10px;
+      padding:12px;
+      background:linear-gradient(180deg, rgba(31,97,141,0.03), rgba(31,97,141,0.01));
+      border:1px solid var(--line);
+      margin-bottom:10px;
+    }
+    .project h4{ margin:0; font-size:14px; color:var(--accent) }
+    .project p{ margin:6px 0 0 0; color:var(--muted); font-size:14px }
+
+    /* Right column (sidebar) */
+    .sidebar{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    .side-block{
+      padding:16px;
+      border-radius:12px;
+      background:linear-gradient(180deg, #ffffff, #fbfdff);
+      border:1px solid var(--line);
+    }
+
+    .edu-item{ margin-bottom:8px }
+    .edu-item strong{ display:block; color:var(--accent-2) }
+    .meta{ color:var(--muted); font-size:13px }
+
+    .divider{
+      height:1px;
+      background:var(--line);
+      margin:12px 0;
+      border-radius:4px;
+    }
+
+    /* Footer / contact */
+    .contact-form{
+      display:grid;
+      gap:8px;
+      margin-top:8px;
+    }
+    .small{
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    /* Responsive */
+    @media (max-width:900px){
+      body{ padding:18px }
+      .main{ grid-template-columns: 1fr; }
+      .avatar{ width:68px; height:68px; font-size:22px }
+      .contact{ justify-content:flex-start }
+    }
+
+    /* subtle focus styles */
+    a:focus, button:focus { outline:3px solid rgba(31,97,141,0.12); outline-offset:2px; border-radius:8px }
+  </style>
+</head>
+<body>
+  <div class="container" role="main">
+    <header class="header" aria-label="page header">
+      <div class="identity">
+        <div class="avatar" aria-hidden="true">GS</div>
+        <div>
+          <div class="name">Gudimella Sri Surya Siva Sriranga Sarvan</div>
+          <div class="role">Frontend Developer (aspiring) — HTML • CSS • Python • C</div>
+        </div>
+      </div>
+
+      <div class="contact" aria-label="contact links">
+        <!-- Update the resume href if you host the PDF -->
+        <a class="btn" href="sandbox:/mnt/data/Frontend_Developer_Resume_Styled.pdf" target="_blank" rel="noopener noreferrer">
+          <!-- simple download svg -->
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 11l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 21H3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Download CV
+        </a>
+        <a class="btn" href="mailto:gsarvan100@gmail.com">
+          <!-- mail icon -->
+          ✉️ Email
+        </a>
+      </div>
+    </header>
+
+    <main class="main" aria-label="main content">
+      <!-- Left column -->
+      <section>
+        <article class="card" aria-labelledby="about-title">
+          <h3 id="about-title" class="section-title">About Me</h3>
+          <p class="lead">
+            Enthusiastic and detail-oriented Frontend Developer with a strong foundation in HTML, CSS and a background in Python and C.
+            I build responsive, user-friendly web interfaces and enjoy learning new tools and frameworks to improve user experience.
+            Fast learner, curious about UI/UX and committed to writing clean, maintainable code.
+          </p>
+
+          <div class="divider" role="separator" aria-hidden="true"></div>
+
+          <h3 class="section-title">Skills</h3>
+          <div class="skills" aria-hidden="false">
+            <div class="skill">HTML5</div>
+            <div class="skill">CSS3</div>
+            <div class="skill">Responsive Design</div>
+            <div class="skill">Python (scripting)</div>
+            <div class="skill">C (basics)</div>
+            <div class="skill">UI/UX Principles</div>
+          </div>
+
+        </article>
+
+        <article class="card" aria-labelledby="projects-title" style="margin-top:14px;">
+          <h3 id="projects-title" class="section-title">Projects</h3>
+
+          <div class="project" aria-labelledby="proj1">
+            <h4 id="proj1">College Books & Library Website</h4>
+            <p>
+              Designed and built a small website to manage college book resources and library information. Implemented responsive layouts and clean navigation using HTML & CSS.
+            </p>
+          </div>
+
+          <div class="project" aria-labelledby="proj2">
+            <h4 id="proj2">(Add more projects)</h4>
+            <p class="small">Tip: Link to live demos or GitHub repos here to increase impact.</p>
+          </div>
+        </article>
+
+        <article class="card" aria-labelledby="interests-title" style="margin-top:14px;">
+          <h3 id="interests-title" class="section-title">Interests</h3>
+          <p class="small">Browsing the web, reading books, learning about new technologies, UI/UX design, and building small web apps.</p>
+        </article>
+      </section>
+
+      <!-- Right column (sidebar) -->
+      <aside class="sidebar" aria-label="sidebar">
+        <div class="side-block" aria-labelledby="education-title">
+          <h3 id="education-title" class="section-title">Education</h3>
+          <div class="edu-item">
+            <strong>Drs K.K.R.S Gowtham School</strong>
+            <div class="meta">10th Grade — CGPA: 9.3</div>
+          </div>
+          <div class="edu-item">
+            <strong>Sir Chantanta</strong>
+            <div class="meta">MPC — 70%</div>
+          </div>
+        </div>
+
+        <div class="side-block" aria-labelledby="contact-title">
+          <h3 id="contact-title" class="section-title">Contact</h3>
+          <div class="meta">Email: <a href="mailto:gsarvan100@gmail.com">gsarvan100@gmail.com</a></div>
+          <div style="height:8px"></div>
+          <div class="meta">Location: India</div>
+
+          <div class="divider" aria-hidden="true"></div>
+
+          <h3 class="section-title" style="margin-top:6px;">Quick Links</h3>
+          <div style="display:flex;flex-direction:column;gap:8px;margin-top:6px;">
+            <a class="btn" href="mailto:gsarvan100@gmail.com">Email Me</a>
+            <!-- Replace '#' with your GitHub/LinkedIn if you have them -->
+            <a class="btn" href="#" aria-disabled="true" style="opacity:0.9;border-style:dashed;">GitHub (add)</a>
+            <a class="btn" href="#" aria-disabled="true" style="opacity:0.9;border-style:dashed;">LinkedIn (add)</a>
+          </div>
+        </div>
+
+        <div class="side-block" aria-labelledby="resume-note">
+          <h3 id="resume-note" class="section-title">Resume</h3>
+          <p class="small">You can host your resume PDF and update the "Download CV" button URL at the top. If you'd like, I can export a downloadable PDF version optimized for sharing.</p>
+        </div>
+      </aside>
+    </main>
+
+    <footer style="margin-top:18px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;">
+      <div class="small">© <strong>Gudimella Sri Surya</strong> — Frontend Developer (aspiring)</div>
+      <div class="small">Made with HTML & CSS • Template provided by ChatGPT</div>
+    </footer>
+  </div>
+</body>
+</html>
