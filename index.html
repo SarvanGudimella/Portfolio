@@ -1,3 +1,4 @@
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -13,7 +14,7 @@
     
     <style>
         :root {
-            /* Core Colors */
+            /* Core Dark Theme Colors */
             --background: 223 47% 11%;
             --foreground: 213 31% 91%;
             --card: 223 47% 11%;
@@ -21,18 +22,18 @@
             --popover: 223 47% 11%;
             --popover-foreground: 213 31% 91%;
             --primary: 210 40% 98%;
-            --primary-foreground: 222.2 84% 4.9%;
-            --secondary: 215 27.9% 16.9%;
+            --primary-foreground: 222 84% 5%;
+            --secondary: 215 28% 17%;
             --secondary-foreground: 210 40% 98%;
-            --muted: 215 27.9% 16.9%;
-            --muted-foreground: 217.9 10.6% 64.9%;
-            --accent: 215 27.9% 16.9%;
+            --muted: 215 28% 17%;
+            --muted-foreground: 218 11% 65%;
+            --accent: 215 28% 17%;
             --accent-foreground: 210 40% 98%;
-            --destructive: 0 62.8% 30.6%;
+            --destructive: 0 63% 31%;
             --destructive-foreground: 210 40% 98%;
-            --border: 215 27.9% 16.9%;
-            --input: 215 27.9% 16.9%;
-            --ring: 216 12.2% 83.9%;
+            --border: 215 28% 17%;
+            --input: 215 28% 17%;
+            --ring: 216 12% 84%;
 
             /* Portfolio Design Variables */
             --primary-hue: 240;
@@ -49,6 +50,7 @@
             --gradient-primary: linear-gradient(135deg, hsl(var(--primary-hue), var(--primary-sat), var(--primary-light)), hsl(calc(var(--primary-hue) + 20), var(--primary-sat), calc(var(--primary-light) + 10%)));
             --gradient-secondary: linear-gradient(135deg, hsl(var(--secondary-hue), var(--secondary-sat), var(--secondary-light)), hsl(calc(var(--secondary-hue) + 20), var(--secondary-sat), calc(var(--secondary-light) + 10%)));
             --gradient-accent: linear-gradient(135deg, hsl(var(--accent-hue), var(--accent-sat), var(--accent-light)), hsl(calc(var(--accent-hue) + 20), var(--accent-sat), calc(var(--accent-light) + 10%)));
+            --gradient-hero: linear-gradient(135deg, hsl(240, 100%, 60%), hsl(260, 100%, 70%));
 
             /* Elegant Shadows */
             --shadow-elegant: 0 10px 30px -10px hsla(var(--primary-hue), var(--primary-sat), var(--primary-light), 0.3);
@@ -71,7 +73,7 @@
             background: hsl(var(--background));
             color: hsl(var(--foreground));
             font-family: 'Inter', sans-serif;
-            line-height: 1.5;
+            line-height: 1.6;
             overflow-x: hidden;
         }
 
@@ -112,13 +114,6 @@
             box-shadow: var(--shadow-elegant);
         }
 
-        /* Navigation Styles */
-        .nav-glass {
-            background: var(--glass-bg);
-            backdrop-filter: blur(12px);
-            border: 1px solid var(--glass-border);
-        }
-
         /* Navigation */
         .nav {
             position: fixed;
@@ -150,64 +145,6 @@
         .nav a:hover, .nav a.active {
             color: hsl(var(--primary));
             background: var(--glass-bg);
-        }
-
-        /* Avatar with Glow */
-        .avatar-glow {
-            background: var(--gradient-primary);
-            box-shadow: var(--shadow-elegant);
-            position: relative;
-        }
-
-        .avatar-glow::before {
-            content: '';
-            position: absolute;
-            inset: -1rem;
-            background: var(--gradient-primary);
-            border-radius: 50%;
-            opacity: 0.2;
-            animation: pulseGlow 3s ease-in-out infinite;
-        }
-
-        /* Button Variants */
-        .btn-gradient {
-            background: var(--gradient-primary);
-            color: hsl(var(--primary-foreground));
-            border: none;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .btn-gradient:hover {
-            opacity: 0.9;
-            transform: translateY(-2px);
-        }
-
-        .btn-glass {
-            background: transparent;
-            border: none;
-            color: hsl(var(--foreground));
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .btn-glass:hover {
-            color: hsl(var(--primary));
-            transform: translateY(-2px);
-        }
-
-        /* Form Inputs */
-        .form-glass {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            color: hsl(var(--foreground));
-            transition: all 0.3s ease;
-        }
-
-        .form-glass:focus {
-            outline: none;
-            border-color: hsl(var(--primary));
-            box-shadow: 0 0 0 3px hsla(var(--primary), 0.1);
         }
 
         /* Hero Section */
@@ -363,6 +300,23 @@
             animation: slideUp 1s ease-out 1s both;
         }
 
+        .btn-gradient {
+            background: var(--gradient-primary);
+            color: hsl(var(--primary-foreground));
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            font-size: 1.125rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-gradient:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
         .scroll-indicator {
             position: absolute;
             bottom: 2rem;
@@ -379,6 +333,12 @@
             display: flex;
             justify-content: center;
             cursor: pointer;
+            background: transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .scroll-mouse:hover {
+            border-color: hsl(var(--primary));
         }
 
         .scroll-dot {
@@ -776,7 +736,7 @@
             </div>
 
             <div class="get-in-touch">
-                <button onclick="scrollToContact()" class="btn-gradient" style="padding: 0.75rem 2rem; border-radius: 0.5rem; font-weight: 600; font-size: 1.125rem;">
+                <button onclick="scrollToContact()" class="btn-gradient">
                     Get In Touch
                 </button>
             </div>
@@ -937,23 +897,32 @@
         </div>
     </section>
 
-    <!-- Education Section -->
+    <!-- Education Section with Updated Order -->
     <section id="education" class="section">
         <div class="container">
             <h2 class="section-title">Education</h2>
             <div style="max-width: 48rem; margin: 0 auto;">
                 <div class="card">
                     <div style="display: flex; flex-direction: column; gap: 2rem;">
+                        <!-- 10th Grade - First -->
+                        <div class="education-card">
+                            <h3 class="education-institution">Drs K.K.R.S Gowtham School</h3>
+                            <p class="education-degree">10th Grade (Secondary Education)</p>
+                            <p class="education-details">CGPA: 9.3/10.0 | Excellence in Academic Performance</p>
+                        </div>
+
+                        <!-- Intermediate - Second -->
                         <div class="education-card">
                             <h3 class="education-institution">Sir Chantanta College</h3>
                             <p class="education-degree">Intermediate - MPC (Mathematics, Physics, Chemistry)</p>
                             <p class="education-details">Percentage: 70% | Focus on Science and Mathematics</p>
                         </div>
 
+                        <!-- BCA Degree - Third (New Addition) -->
                         <div class="education-card">
-                            <h3 class="education-institution">Drs K.K.R.S Gowtham School</h3>
-                            <p class="education-degree">10th Grade (Secondary Education)</p>
-                            <p class="education-details">CGPA: 9.3/10.0 | Excellence in Academic Performance</p>
+                            <h3 class="education-institution">Aditya Degree College</h3>
+                            <p class="education-degree">BCA (Bachelor of Computer Applications)</p>
+                            <p class="education-details">2 Years Average CGPA: 8.3/10.0 | Completing Final Year</p>
                         </div>
                     </div>
                 </div>
