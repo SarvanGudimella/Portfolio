@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -14,7 +13,7 @@
     
     <style>
         :root {
-            /* Colors */
+            /* Core Colors */
             --background: 223 47% 11%;
             --foreground: 213 31% 91%;
             --card: 223 47% 11%;
@@ -34,13 +33,8 @@
             --border: 215 27.9% 16.9%;
             --input: 215 27.9% 16.9%;
             --ring: 216 12.2% 83.9%;
-            --chart-1: 220 70% 50%;
-            --chart-2: 160 60% 45%;
-            --chart-3: 30 80% 55%;
-            --chart-4: 280 65% 60%;
-            --chart-5: 340 75% 55%;
 
-            /* Design System */
+            /* Portfolio Design Variables */
             --primary-hue: 240;
             --primary-sat: 100%;
             --primary-light: 60%;
@@ -51,16 +45,16 @@
             --accent-sat: 90%;
             --accent-light: 70%;
 
-            /* Gradients */
+            /* Beautiful Gradients */
             --gradient-primary: linear-gradient(135deg, hsl(var(--primary-hue), var(--primary-sat), var(--primary-light)), hsl(calc(var(--primary-hue) + 20), var(--primary-sat), calc(var(--primary-light) + 10%)));
             --gradient-secondary: linear-gradient(135deg, hsl(var(--secondary-hue), var(--secondary-sat), var(--secondary-light)), hsl(calc(var(--secondary-hue) + 20), var(--secondary-sat), calc(var(--secondary-light) + 10%)));
             --gradient-accent: linear-gradient(135deg, hsl(var(--accent-hue), var(--accent-sat), var(--accent-light)), hsl(calc(var(--accent-hue) + 20), var(--accent-sat), calc(var(--accent-light) + 10%)));
 
-            /* Shadows */
+            /* Elegant Shadows */
             --shadow-elegant: 0 10px 30px -10px hsla(var(--primary-hue), var(--primary-sat), var(--primary-light), 0.3);
             --shadow-glow: 0 0 40px hsla(var(--primary-hue), var(--primary-sat), calc(var(--primary-light) + 20%), 0.4);
 
-            /* Glass effects */
+            /* Glass Effects */
             --glass-bg: hsla(var(--background), 0.1);
             --glass-border: hsla(var(--foreground), 0.1);
 
@@ -81,6 +75,10 @@
             overflow-x: hidden;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         /* Particles Background */
         #particles-canvas {
             position: fixed;
@@ -90,6 +88,35 @@
             height: 100%;
             z-index: 1;
             pointer-events: none;
+        }
+
+        /* Beautiful Gradient Text */
+        .gradient-text {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Glass Morphism Effects */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-elegant);
+        }
+
+        /* Navigation Styles */
+        .nav-glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
         }
 
         /* Navigation */
@@ -117,11 +144,70 @@
             transition: all 0.3s ease;
             padding: 0.5rem 1rem;
             border-radius: 1rem;
+            cursor: pointer;
         }
 
-        .nav a:hover {
+        .nav a:hover, .nav a.active {
             color: hsl(var(--primary));
             background: var(--glass-bg);
+        }
+
+        /* Avatar with Glow */
+        .avatar-glow {
+            background: var(--gradient-primary);
+            box-shadow: var(--shadow-elegant);
+            position: relative;
+        }
+
+        .avatar-glow::before {
+            content: '';
+            position: absolute;
+            inset: -1rem;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            opacity: 0.2;
+            animation: pulseGlow 3s ease-in-out infinite;
+        }
+
+        /* Button Variants */
+        .btn-gradient {
+            background: var(--gradient-primary);
+            color: hsl(var(--primary-foreground));
+            border: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-gradient:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .btn-glass {
+            background: transparent;
+            border: none;
+            color: hsl(var(--foreground));
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-glass:hover {
+            color: hsl(var(--primary));
+            transform: translateY(-2px);
+        }
+
+        /* Form Inputs */
+        .form-glass {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            color: hsl(var(--foreground));
+            transition: all 0.3s ease;
+        }
+
+        .form-glass:focus {
+            outline: none;
+            border-color: hsl(var(--primary));
+            box-shadow: 0 0 0 3px hsla(var(--primary), 0.1);
         }
 
         /* Hero Section */
@@ -185,7 +271,7 @@
             height: 6rem;
             border: 2px solid hsl(var(--accent));
             opacity: 0.1;
-            animation: rotate 20s linear infinite;
+            animation-delay: -6s;
         }
 
         .hero-content {
@@ -229,13 +315,6 @@
             animation: slideUp 1s ease-out 0.2s both;
         }
 
-        .gradient-text {
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
         .typing-text {
             font-size: clamp(1.25rem, 3vw, 1.5rem);
             color: hsl(var(--muted-foreground));
@@ -259,6 +338,7 @@
             justify-content: center;
             gap: 1.5rem;
             animation: slideUp 1s ease-out 1s both;
+            margin-bottom: 2rem;
         }
 
         .social-btn {
@@ -279,6 +359,10 @@
             transform: translateY(-2px);
         }
 
+        .get-in-touch {
+            animation: slideUp 1s ease-out 1s both;
+        }
+
         .scroll-indicator {
             position: absolute;
             bottom: 2rem;
@@ -294,6 +378,7 @@
             border-radius: 1.25rem;
             display: flex;
             justify-content: center;
+            cursor: pointer;
         }
 
         .scroll-dot {
@@ -437,6 +522,33 @@
             font-weight: 500;
         }
 
+        /* Education */
+        .education-card {
+            padding: 1.5rem;
+            border-left: 4px solid hsl(var(--primary));
+            background: var(--glass-bg);
+            border-radius: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .education-institution {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: hsl(var(--foreground));
+            margin-bottom: 0.5rem;
+        }
+
+        .education-degree {
+            color: hsl(var(--primary));
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-details {
+            color: hsl(var(--muted-foreground));
+            font-size: 0.875rem;
+        }
+
         /* Contact Form */
         .contact-form {
             max-width: 32rem;
@@ -521,11 +633,6 @@
             50% { transform: translateY(-20px) rotate(180deg); }
         }
 
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
         @keyframes scaleIn {
             0% {
                 transform: scale(0.95);
@@ -565,14 +672,14 @@
             50% { opacity: 0.5; }
         }
 
-        @keyframes typing {
-            from { width: 0; }
-            to { width: 100%; }
-        }
-
         @keyframes blink {
             0%, 50% { opacity: 1; }
             51%, 100% { opacity: 0; }
+        }
+
+        /* Utility Classes */
+        .cursor {
+            animation: blink 1s infinite;
         }
 
         /* Responsive Design */
@@ -607,11 +714,6 @@
                 flex-direction: column;
             }
         }
-
-        /* Utility Classes */
-        .cursor {
-            animation: blink 1s infinite;
-        }
     </style>
 </head>
 <body>
@@ -620,12 +722,12 @@
 
     <!-- Navigation -->
     <nav class="nav">
-        <a href="#hero">Home</a>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#education">Education</a>
-        <a href="#contact">Contact</a>
+        <a href="#hero" class="nav-link">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#education" class="nav-link">Education</a>
+        <a href="#contact" class="nav-link">Contact</a>
     </nav>
 
     <!-- Hero Section -->
@@ -672,12 +774,18 @@
                     </svg>
                 </button>
             </div>
+
+            <div class="get-in-touch">
+                <button onclick="scrollToContact()" class="btn-gradient" style="padding: 0.75rem 2rem; border-radius: 0.5rem; font-weight: 600; font-size: 1.125rem;">
+                    Get In Touch
+                </button>
+            </div>
         </div>
 
         <div class="scroll-indicator">
-            <div class="scroll-mouse">
+            <button onclick="scrollToNext()" class="scroll-mouse">
                 <div class="scroll-dot"></div>
-            </div>
+            </button>
         </div>
     </section>
 
@@ -836,28 +944,16 @@
             <div style="max-width: 48rem; margin: 0 auto;">
                 <div class="card">
                     <div style="display: flex; flex-direction: column; gap: 2rem;">
-                        <div style="padding: 1.5rem; border-left: 4px solid hsl(var(--primary)); background: var(--glass-bg); border-radius: 0.5rem;">
-                            <h3 style="font-size: 1.25rem; font-weight: bold; color: hsl(var(--foreground)); margin-bottom: 0.5rem;">
-                                Sir Chantanta College
-                            </h3>
-                            <p style="color: hsl(var(--primary)); font-weight: 600; margin-bottom: 0.5rem;">
-                                Intermediate - MPC (Mathematics, Physics, Chemistry)
-                            </p>
-                            <p style="color: hsl(var(--muted-foreground)); font-size: 0.875rem;">
-                                Percentage: 70% | Focus on Science and Mathematics
-                            </p>
+                        <div class="education-card">
+                            <h3 class="education-institution">Sir Chantanta College</h3>
+                            <p class="education-degree">Intermediate - MPC (Mathematics, Physics, Chemistry)</p>
+                            <p class="education-details">Percentage: 70% | Focus on Science and Mathematics</p>
                         </div>
 
-                        <div style="padding: 1.5rem; border-left: 4px solid hsl(var(--primary)); background: var(--glass-bg); border-radius: 0.5rem;">
-                            <h3 style="font-size: 1.25rem; font-weight: bold; color: hsl(var(--foreground)); margin-bottom: 0.5rem;">
-                                Drs K.K.R.S Gowtham School
-                            </h3>
-                            <p style="color: hsl(var(--primary)); font-weight: 600; margin-bottom: 0.5rem;">
-                                10th Grade (Secondary Education)
-                            </p>
-                            <p style="color: hsl(var(--muted-foreground)); font-size: 0.875rem;">
-                                CGPA: 9.3/10.0 | Excellence in Academic Performance
-                            </p>
+                        <div class="education-card">
+                            <h3 class="education-institution">Drs K.K.R.S Gowtham School</h3>
+                            <p class="education-degree">10th Grade (Secondary Education)</p>
+                            <p class="education-details">CGPA: 9.3/10.0 | Excellence in Academic Performance</p>
                         </div>
                     </div>
                 </div>
@@ -1054,8 +1150,23 @@
         // Initialize particles
         new ParticlesBackground();
 
-        // Smooth Scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        // Navigation Functions
+        function scrollToContact() {
+            document.querySelector('#contact').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+
+        function scrollToNext() {
+            document.querySelector('#about').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+
+        // Smooth Scrolling for Navigation
+        document.querySelectorAll('.nav-link').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
@@ -1125,7 +1236,7 @@
         // Navigation active state
         window.addEventListener('scroll', function() {
             const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('.nav a');
+            const navLinks = document.querySelectorAll('.nav-link');
             
             let currentSection = '';
             
@@ -1139,12 +1250,10 @@
             });
             
             navLinks.forEach(link => {
-                link.style.color = '';
-                link.style.background = '';
+                link.classList.remove('active');
                 
                 if (link.getAttribute('href') === '#' + currentSection) {
-                    link.style.color = 'hsl(var(--primary))';
-                    link.style.background = 'var(--glass-bg)';
+                    link.classList.add('active');
                 }
             });
         });
